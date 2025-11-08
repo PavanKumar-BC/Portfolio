@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Contact</h1>
+<p class="lead">Get in touch — email/address/links can be added later.</p>
+
+<div class="row">
+  <div class="col-md-7">
+    <form method="post" action="{{ url_for('contact') }}">
+      <div class="mb-3">
+        <label class="form-label">Your name</label>
+        <input name="name" type="text" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input name="email" type="email" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Message</label>
+        <textarea name="message" rows="5" class="form-control" required></textarea>
+      </div>
+      <button class="btn btn-primary" type="submit">Send message</button>
+    </form>
+  </div>
+  <div class="col-md-5">
+    <div class="card p-3">
+      <h5>Other ways</h5>
+      <p>Add your email and social links here later.</p>
+      <p><strong>Email:</strong> <em>you@example.com</em></p>
+      <p><strong>GitHub:</strong> <em>github.com/yourusername</em></p>
+    </div>
+  </div>
+</div>
+{% endblock %}

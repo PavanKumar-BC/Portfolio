@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pavan Kumar B C — Python and Java Full Stack Developer</title>
+  <meta name="description" content="Pavan Kumar B C — Python and Java Full Stack Developer. Portfolio showcasing projects and contact." />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+  <script>
+    // Theme initialization: read saved or prefer dark
+    const userPref = localStorage.getItem('theme');
+    if (userPref) {
+      document.documentElement.setAttribute('data-theme', userPref);
+    } else {
+      // default to dark theme
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      // update toggle icon if exists
+      const icon = document.getElementById('theme-icon');
+      if (icon) {
+        icon.className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+      }
+    }
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="{{ url_for('index') }}">
+        <img src="{{ url_for('static', filename='images/avatar.png') }}" alt="Pavan" class="avatar-sm me-2">
+        <strong>Pavan Kumar B C</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('projects') }}">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
+          <li class="nav-item">
+            <button class="btn btn-link nav-link" onclick="toggleTheme()" title="Toggle theme">
+              <i id="theme-icon" class="fas"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-wrap">
+        {% for category, msg in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ msg }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>
+        {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="bg-dark text-light py-4 mt-5">
+    <div class="container text-center">
+      <p class="mb-0">© {{ now.year }} Pavan Kumar B C — Built with Flask • Theme: <span id="theme-text"></span></p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // set theme icon and footer label on load
+    document.addEventListener('DOMContentLoaded', function () {
+      const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+      const icon = document.getElementById('theme-icon');
+      if (icon) icon.className = cur === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+      const ttext = document.getElementById('theme-text');
+      if (ttext) ttext.textContent = cur === 'dark' ? 'Dark' : 'Light';
+    });
+    // update footer when toggling
+    window.toggleTheme = (function (orig) {
+      return function () {
+        orig();
+        const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+        const ttext = document.getElementById('theme-text');
+        if (ttext) ttext.textContent = cur === 'dark' ? 'Dark' : 'Light';
+      };
+    })(toggleTheme);
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Projects</h1>
+<p class="lead">A few highlighted projects — click to view repo or demo (placeholders).</p>
+
+<div class="row">
+  {% for p in projects %}
+  <div class="col-md-6 mb-4">
+    <div class="card h-100 project-card">
+      <div class="row g-0 align-items-center">
+        <div class="col-5">
+          <img src="{{ p.thumb }}" class="img-fluid rounded-start" alt="{{ p.title }}">
+        </div>
+        <div class="col-7">
+          <div class="card-body">
+            <h5 class="card-title">{{ p.title }}</h5>
+            <p class="card-text">{{ p.desc }}</p>
+            <p><small class="text-muted">{{ p.tech }}</small></p>
+            <a href="{{ p.link }}" class="btn btn-sm btn-primary" target="_blank">View</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

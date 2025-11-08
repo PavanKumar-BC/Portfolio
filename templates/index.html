@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pavan Kumar B C | Full Stack Developer</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: "Poppins", sans-serif;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    /* Fixed top horizontal nav */
+    .top-nav {
+      position: fixed;
+      top: 20px;
+      left: 15%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 20px;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.8);
+      padding: 10px 20px;
+      border-radius: 50px;
+      box-shadow: 0 0 15px rgba(0, 170, 255, 0.3);
+    }
+
+    .top-nav a {
+      background-color: transparent;
+      color: #00aaff;
+      padding: 8px 16px;
+      border: 1px solid #00aaff;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .top-nav a:hover {
+      background-color: #00aaff;
+      color: #fff;
+      box-shadow: 0 0 20px #00aaff;
+    }
+
+    /* Hero section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      padding: 0 5%;
+      text-align: left;
+    }
+
+    .hero-text {
+      flex: 1;
+      animation: fadeIn 2s;
+    }
+
+    .hero img {
+      width: 300px;
+      border-radius: 50%;
+      border: 3px solid #00aaff;
+      box-shadow: 0 0 35px rgba(0, 170, 255, 0.5);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px rgba(0,170,255,0.6);
+    }
+
+    .typed-text {
+      color: #00aaff;
+      font-weight: 600;
+      font-size: 1.5rem;
+    }
+
+    .hero-buttons {
+      margin-top: 25px;
+    }
+
+    .hero-buttons a {
+      margin-right: 15px;
+      padding: 10px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .btn-hire {
+      background-color: #00aaff;
+      color: white;
+      box-shadow: 0 0 20px rgba(0,170,255,0.5);
+    }
+
+    .btn-hire:hover {
+      background-color: #0088cc;
+      box-shadow: 0 0 25px rgba(0,170,255,0.8);
+    }
+
+    .btn-cv {
+      background-color: transparent;
+      color: #00aaff;
+      border: 2px solid #00aaff;
+    }
+
+    .btn-cv:hover {
+      background-color: #00aaff;
+      color: #fff;
+    }
+
+    /* Sections */
+    section {
+      padding: 100px 10%;
+    }
+
+    #about, #projects, #contact {
+      background-color: rgba(15, 15, 15, 0.9);
+      margin-top: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(0,170,255,0.2);
+      padding: 60px 50px;
+    }
+
+    h2 {
+      color: #00aaff;
+      margin-bottom: 25px;
+      text-shadow: 0 0 10px rgba(0,170,255,0.5);
+    }
+
+    a {
+      color: #00aaff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #050505;
+      margin-top: 50px;
+      border-top: 1px solid #111;
+      color: #777;
+    }
+
+    /* ---- GitHub button style ---- */
+    .github-btn {
+      display: inline-block;
+      background-color: #24292e;
+      color: #ffffff;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 16px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .github-btn:hover {
+      background-color: #2ea44f;
+      box-shadow: 0 4px 12px rgba(46, 164, 79, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .github-btn i {
+      margin-right: 8px;
+      font-size: 18px;
+    }
+
+    /* --- Contact icon styles --- */
+.contact-icon {
+  font-size: 40px;
+  color: #00aaff;
+  margin: 0 25px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.contact-icon:hover {
+  color: #fff;
+  text-shadow: 0 0 25px #00aaff, 0 0 40px #00aaff;
+  transform: translateY(-5px) scale(1.1);
+}
+
+    /* Skills Section */
+#skills {
+  padding: 80px 0;
+  text-align: left;
+  margin-left: 4%;
+  background-color: #0d1117;
+}
+
+#skills h2 {
+  color: #00aaff;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 40px;
+  justify-items: center;
+  max-width: 900px;
+  margin: auto;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-item img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  border: 2px solid #00aaff;
+  border-radius: 17px;
+  padding: 10px;
+  background: rgba(0, 170, 255, 0.05);
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.skill-item p {
+  margin-top: 12px;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.skill-item:hover img {
+  transform: scale(1.15);
+  box-shadow: 0 0 25px rgba(0, 170, 255, 0.7);
+}
+
+.skill-item:hover p {
+  color: #00aaff;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Top horizontal nav -->
+  <div class="top-nav">
+    <a href="#about">About Me</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!-- Hero section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Hi, I'm <span style="color:#00aaff;">Pavan Kumar B C</span></h1>
+      <h3 class="typed-text"></h3>
+      <div class="hero-buttons">
+        <a href="mailto:pavansckkp@gmail.com" class="btn-hire">Hire Me</a>
+      <a href="{{ url_for('static', filename='images/Pavan kumar BC.pdf') }}" class="btn-cv" download>Download CV</a>
+      </div>
+    </div>
+    <img src="{{ url_for('static', filename='images/profile.png') }}" alt="Pavan Kumar B C">
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I’m <b>Pavan Kumar B C</b>, a passionate <b>Full Stack Developer</b> skilled in
+      <b>Python, Java, Django, Spring Boot,</b> and modern web technologies. I love designing efficient and creative solutions for real-world problems.
+    </p>
+    <p>I’m an enthusiastic and dedicated fresher developer with strong skills in Python and its frameworks — Django, Flask, and FastAPI — along with a solid understanding of Java.
+      I’ve built hands-on projects using each framework, gaining practical experience in web development, API creation, and backend logic. These projects helped me strengthen my understanding of database handling, RESTful APIs, and application deployment.
+      I’m passionate about writing clean, efficient code and continuously learning new technologies to improve my craft. I’m currently open to opportunities as a Software Developer / Backend Developer, where I can contribute to impactful projects, collaborate with talented teams, and grow both technically and professionally.
+    </p>
+  </section>
+
+  <!-- Skills Section -->
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-item">
+      <img src="{{ url_for('static', filename='images/skills/PYTHON.jpg') }}" alt="Python">
+      <p>Python</p>
+    </div>
+    <div class="skill-item">
+      <img src="{{ url_for('static', filename='images/skills/flask.png') }}" alt="Flask">
+      <p>Flask</p>
+    </div>
+    <div class="skill-item">
+      <img src="{{ url_for('static', filename='images/skills/django.jpg') }}" alt="Django">
+      <p>Django</p>
+    </div>
+    <div class="skill-item">
+      <img src="{{ url_for('static', filename='images/skills/fastAPI.png') }}" alt="FastAPI">
+      <p>FastAPI</p>
+    </div>
+    <div class="skill-item">
+      <img src="{{ url_for('static', filename='images/skills/html.jpg') }}" alt="HTML">
+      <p>HTML</p>
+    </div>
+    <div class="skill-item">
+      <img src="{{ url_for('static', filename='images/skills/css.png') }}" alt="CSS">
+      <p>CSS</p>
+    </div>
+    <div class="skill-item">
+      <img src="{{ url_for('static', filename='images/skills/java.png') }}" alt="Java">
+      <p>Java</p>
+    </div>
+    <div class="skill-item">
+      <img src="{{ url_for('static', filename='images/skills/sql.png') }}" alt="SQL">
+      <p>SQL</p>
+    </div>
+    <div class="skill-item">
+      <img src="{{ url_for('static', filename='images/skills/github.png') }}" alt="GitHub">
+      <p>GitHub</p>
+    </div>
+    <div class="skill-item">
+      <img src="{{ url_for('static', filename='images/skills/data analyst.jpg') }}" alt="Data Analyst">
+      <p>Data Analyst</p>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="project">
+      <h4><strong>1. Flask-market-app</strong></h4>
+      <div style="display:flex; align-items:center; gap:40px;">
+        <img src="{{ url_for('static', filename='images/market.jpg') }}" alt="Market"
+             style="width:300px; border-radius:10px; border:2px solid #00aaff; box-shadow:0 0 25px rgba(0,170,255,0.4);">
+        <a href="https://github.com/PavanKumar-BC/flask-market-app" target="_blank" class="github-btn">
+          <i class="fab fa-github"></i> View on GitHub
+        </a>
+      </div>
+      <br>
+      <p>Flask Market App is a full-stack web application built using the Flask framework, designed to simulate a small online marketplace
+        environment. The platform allows users to register, log in, and log out securely using Flask-Login for authentication management.
+        Once logged in, users are provided with a virtual wallet (budget) to buy and sell items within the marketplace.</p>
+      <p>The application features a clean and intuitive user interface where users can browse available products, purchase them if they have
+        enough balance, or list their own items for sale. Each transaction dynamically updates the user’s balance and item ownership in real-time,
+        ensuring accurate synchronization between users and items.</p>
+    </div>
+    <br>
+
+    <div class="project">
+      <h4><strong>2. Student-management-system</strong></h4>
+      <div style="display:flex; align-items:center; gap:40px;">
+        <img src="{{ url_for('static', filename='images/student.jpg') }}" alt="Student MS"
+             style="width:300px;border-radius:10px;border:2px solid #00aaff;box-shadow:0 0 25px rgba(0,170,255,0.4);">
+        <a href="https://github.com/PavanKumar-BC/Student-management-system" target="_blank" class="github-btn">
+          <i class="fab fa-github"></i> View on GitHub
+        </a>
+      </div>
+      <br>
+      <p>The Student Management System is a web-based application built using the Django framework, designed to
+        streamline and digitize student-related record management. It provides administrators with a centralized
+        platform to efficiently manage student profiles, academic performance, attendance records, and fee details — all
+        from a single dashboard.</p>
+      <p>For students, the system offers a secure portal where they can log in to view their marks, attendance status,
+        and fee payments in real time. Administrators can easily update data, generate reports, and monitor student progress
+        without relying on manual record-keeping.</p>
+    </div>
+    <br>
+
+    <div class="project">
+      <h4><strong>3. Fastapi-blog</strong></h4>
+      <div style="display:flex; align-items:center; gap:40px;">
+        <img src="{{ url_for('static', filename='images/blog.png') }}" alt="FastAPI"
+             style="width:300px;border-radius:10px;border:2px solid #00aaff;box-shadow:0 0 25px rgba(0,170,255,0.4);">
+        <a href="https://github.com/PavanKumar-BC/fastapi-blog" target="_blank" class="github-btn">
+          <i class="fab fa-github"></i> View on GitHub
+        </a>
+      </div>
+      <br>
+      <p>FastAPI Blog is a lightweight yet fully functional RESTful API application developed using the FastAPI framework
+        and SQLAlchemy ORM. The project demonstrates how to build a secure and modular backend for a blogging platform,
+        where users can register, authenticate, and manage blog posts efficiently.</p>
+      <p>It implements all core CRUD (Create, Read, Update, Delete) operations for both users and posts, showcasing the
+        structure and best practices of modern API development. The application follows a clean modular design using routers,
+        Pydantic schemas, and database models, ensuring scalability, readability, and maintainability.</p>
+    </div>
+    <br>
+
+    <div class="project">
+      <h4><strong>4. Movie-Recommendation-system</strong></h4>
+      <div style="display:flex; align-items:center; gap:40px;">
+        <img src="{{ url_for('static', filename='images/movier.jpg') }}" alt="Movie RS"
+             style="width:300px;border-radius:10px;border:2px solid #00aaff;box-shadow:0 0 25px rgba(0,170,255,0.4);">
+        <a href="https://github.com/PavanKumar-BC/Movie-Recommendation-system" target="_blank" class="github-btn">
+          <i class="fab fa-github"></i> View on GitHub
+        </a>
+      </div>
+      <br>
+      <p>The Movie Recommendation System is a data-driven Python project designed to provide personalized movie
+        suggestions based on user preferences and viewing history. It leverages collaborative filtering techniques to
+        analyze user ratings and identify patterns of similarity between users and movies.</p>
+      <p>Using libraries like Pandas and Scikit-learn, the system performs data preprocessing, feature extraction, and
+        similarity computation to deliver accurate and efficient recommendations. The modular codebase ensures scalability and
+        easy experimentation with various recommendation approaches, including user-based and item-based filtering.</p>
+    </div>
+    <br>
+
+    <div class="project">
+      <h4><strong>5. Job-Portal</strong></h4>
+      <div style="display:flex; align-items:center; gap:40px;">
+        <img src="{{ url_for('static', filename='images/job.jpg') }}" alt="Job-Portal"
+             style="width:300px;border-radius:10px;border:2px solid #00aaff;box-shadow:0 0 25px rgba(0,170,255,0.4);">
+        <a href="https://github.com/PavanKumar-BC/flask_job_portal" target="_blank" class="github-btn">
+          <i class="fab fa-github"></i> View on GitHub
+        </a>
+      </div>
+      <br>
+      <p>TThe Job Portal is a role-based web application developed using the Flask framework, designed to streamline the recruitment
+        process for both Recruiters and Candidates. It provides a clean and intuitive interface that allows recruiters to post job openings,
+        review applications, and manage listings, while candidates can register, create profiles, and apply for positions that match their
+        skills and interests.</p>
+      <p>Built with SQLite as the backend database, the platform efficiently stores user data, job listings, and application records, ensuring secure and organized access. Flask’s modular structure and routing system make the app lightweight yet scalable for future enhancements.</p>
+    </div>
+    <br>
+
+    <div class="project">
+      <h4><strong>6. COVID-19-Visualization</strong></h4>
+      <div style="display:flex; align-items:center; gap:40px;">
+        <img src="{{ url_for('static', filename='images/covid.jpg') }}" alt="COVID-19 Visualization"
+             style="width:300px;border-radius:10px;border:2px solid #00aaff;box-shadow:0 0 25px rgba(0,170,255,0.4);">
+        <a href="https://github.com/PavanKumar-BC/COVID-19-Visualization" target="_blank" class="github-btn">
+          <i class="fab fa-github"></i> View on GitHub
+        </a>
+      </div>
+      <br>
+      <p>The COVID-19 Data Visualization project provides an in-depth data analysis and visualization of the global COVID-19 pandemic during 2020. Built entirely using Python, this project leverages Pandas, Matplotlib, and Seaborn to clean, analyze, and visualize country-wise trends of confirmed, recovered, and death cases.</p>
+      <p>The primary goal of this project is to explore patterns in the spread and impact of COVID-19 through visual storytelling. By analyzing real-world data obtained from Kaggle’s COVID-19 dataset, the system presents insightful charts such as global trend lines, top 10 affected countries, month-wise variations, and correlation heatmaps. The project highlights how data visualization can simplify complex health data, enabling better understanding of global pandemic trends.</p>
+    </div>
+
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:pavansckkp@gmail.com">pavansckkp@gmail.com</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/pavan-kumar-b-c/">https://www.linkedin.com/in/pavan-kumar-b-c/</a></p>
+    <p>GitHub: <a href="https://github.com/PavanKumar-BC">https://github.com/PavanKumar-BC</a></p>
+
+    <div style="text-align:center; margin-top:40px;">
+      <a href="mailto:pavansckkp@gmail.com" target="_blank" class="contact-icon">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/pavan-kumar-b-c/" target="_blank" class="contact-icon">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/PavanKumar-BC" target="_blank" class="contact-icon">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </section>
+
+
+  <footer>
+    © 2025 Pavan Kumar B C. All rights reserved.
+  </footer>
+
+  <script>
+    const typedText = document.querySelector(".typed-text");
+    const words = ["Full Stack Java Developer", "Full Stack Python Developer"];
+    let i = 0, j = 0, currentWord = "", isDeleting = false;
+
+    function type() {
+      currentWord = words[i];
+      if (!isDeleting) {
+        typedText.textContent = currentWord.slice(0, ++j);
+        if (j === currentWord.length) {
+          isDeleting = true;
+          setTimeout(type, 1500);
+          return;
+        }
+      } else {
+        typedText.textContent = currentWord.slice(0, --j);
+        if (j === 0) {
+          isDeleting = false;
+          i = (i + 1) % words.length;
+        }
+      }
+      setTimeout(type, isDeleting ? 60 : 100);
+    }
+    type();
+  </script>
+
+</body>
+</html>
